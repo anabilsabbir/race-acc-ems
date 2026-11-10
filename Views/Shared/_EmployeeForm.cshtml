@@ -1,0 +1,25 @@
+@model Employee
+
+<div class="field">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" placeholder="Jane Doe" />
+    <span asp-validation-for="Name" class="field-error"></span>
+</div>
+
+<div class="field">
+    <label asp-for="Designation"></label>
+    <input asp-for="Designation" placeholder="Software Engineer" />
+    <span asp-validation-for="Designation" class="field-error"></span>
+</div>
+
+<div class="field">
+    <label asp-for="Age"></label>
+    <input asp-for="Age" type="number" min="16" max="100" />
+    <span asp-validation-for="Age" class="field-error"></span>
+</div>
+
+<div class="field">
+    <label asp-for="Salary"></label>
+    <input asp-for="Salary" type="number" min="0" step="0.01" />
+    <span asp-validation-for="Salary" class="field-error"></span>
+</div>

@@ -1,0 +1,26 @@
+@model Employee
+
+@{
+    ViewData["Title"] = "Add employee";
+}
+
+<h1>Add employee</h1>
+<p class="lede">Enter name, designation, age, and salary.</p>
+
+<div asp-validation-summary="ModelOnly" class="status error"></div>
+<p id="status" class="status error" hidden></p>
+
+<form id="employee-form"
+      asp-action="Create"
+      method="post"
+      data-index-url="@Url.Action("Index")">
+    <partial name="_EmployeeForm" />
+    <div class="actions">
+        <button type="submit" id="save">Save employee</button>
+        <a class="btn secondary" asp-action="Index">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/employee-form.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,217 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #142033;
+  background: #eef2f7;
+}
+
+body {
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.page {
+  max-width: 720px;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(20 32 51 / 8%);
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+}
+
+.lede {
+  margin: 0 0 1.25rem;
+  color: #5b6b80;
+}
+
+form, .field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+form {
+  gap: 0.85rem;
+}
+
+label, dt {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+button, .btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  cursor: pointer;
+  background: #1d4ed8;
+  color: #fff;
+  text-decoration: none;
+}
+
+button.danger, .btn.danger {
+  background: #b91c1c;
+}
+
+button.secondary {
+  background: #64748b;
+}
+
+.btn.secondary {
+  background: #64748b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.65rem 0.4rem;
+  border-bottom: 1px solid #e6edf5;
+}
+
+.page-header {
+  margin-bottom: 1rem;
+}
+
+.page-header .lede {
+  margin-bottom: 0;
+}
+
+/* "Add employee" on the left, search bar pushed to the far right */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.btn-add {
+  flex-shrink: 0;
+  white-space: nowrap;
+  height: 2.6rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Search bar with a magnifier icon */
+.search {
+  display: block;
+  flex: 0 1 300px;
+  min-width: 0;
+}
+
+.search input {
+  width: 100%;
+  height: 2.6rem;
+  box-sizing: border-box;
+  padding-left: 2.4rem;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%235b6b80' stroke-width='2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 0.75rem center;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgb(29 78 216 / 18%);
+}
+
+/* Small screens: stack the title and the button */
+@media (max-width: 480px) {
+  .page {
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 1.25rem 1rem;
+  }
+
+  /* Too narrow for one row: button on top, search bar below, both full width */
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-add {
+    justify-content: center;
+  }
+
+  .search {
+    flex-basis: auto;
+  }
+}
+
+#employee-form {
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  border: 1px solid #e6edf5;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.status {
+  margin: 0 0 1rem;
+}
+
+/* Keep this a normal table cell (display:flex on a <td> breaks the row borders) */
+.row-actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.row-actions .btn + .btn {
+  margin-left: 0.4rem;
+}
+
+.row-actions .btn {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.field-error {
+  color: #b91c1c;
+  font-size: 0.85rem;
+}
+
+.status {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: #dcfce7;
+}
+
+.status.error {
+  background: #fee2e2;
+}
+
+dl {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+dd {
+  margin: 0.2rem 0 0;
+}

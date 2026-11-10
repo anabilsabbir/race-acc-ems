@@ -1,0 +1,82 @@
+@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+    var search = ViewData["Search"] as string;
+}
+
+<div class="page-header">
+    <h1>Race Acc EMS</h1>
+    <p class="lede">Search, add, edit, and delete employees.</p>
+</div>
+
+<div class="toolbar">
+    <a id="show-form" class="btn btn-add" asp-action="Create">+ Add employee</a>
+    <form id="search-form" class="search" method="get" asp-action="Index" role="search">
+        <input type="search"
+               id="search"
+               name="search"
+               value="@search"
+               placeholder="Search name or designation…"
+               aria-label="Search employees by name or designation"
+               autocomplete="off" />
+    </form>
+</div>
+
+@if (TempData["Status"] is string status)
+{
+    <p id="status" class="status">@status</p>
+}
+else
+{
+    <p id="status" class="status" hidden></p>
+}
+
+@* Anti-forgery token for the AJAX delete requests *@
+@Html.AntiForgeryToken()
+
+<table id="employee-table"
+       data-delete-url="@Url.Action("Delete", new { id = 0 })"
+       data-edit-url="@Url.Action("Edit", new { id = 0 })">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="rows">
+        @if (!Model.Any())
+        {
+            <tr class="empty">
+                <td colspan="5">
+                    @(string.IsNullOrEmpty(search)
+                        ? "No employees yet. Click \"Add employee\" to add one."
+                        : $"No employees match \"{search}\".")
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var employee in Model)
+            {
+                <tr data-id="@employee.Id">
+                    <td>@employee.Name</td>
+                    <td>@employee.Designation</td>
+                    <td>@employee.Age</td>
+                    <td>@employee.Salary?.ToString("0.00")</td>
+                    <td class="row-actions">
+                        <a class="btn secondary btn-edit" asp-action="Edit" asp-route-id="@employee.Id">Edit</a>
+                        <button type="button" class="btn danger btn-delete">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/employees.js" asp-append-version="true"></script>
+}

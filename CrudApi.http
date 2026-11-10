@@ -1,0 +1,6 @@
+@CrudApi_HostAddress = http://localhost:5250
+
+GET {{CrudApi_HostAddress}}/
+Accept: text/html
+
+###
